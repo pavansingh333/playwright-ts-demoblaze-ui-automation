@@ -9,16 +9,14 @@ export class LoginPage {
     readonly loginButton: Locator;
     readonly logoutButton: Locator;
 
-    constructor(pageFromLoginTest: Page) {
-        this.page = pageFromLoginTest;
-        this.loginLink = pageFromLoginTest.locator("//a[@id='login2']");
-        this.usernameInput = pageFromLoginTest.locator("//input[@id='loginusername']");
-        this.passwordInput = pageFromLoginTest.locator("//input[@id='loginpassword']");
-        this.loginButton = pageFromLoginTest.locator("//button[text()='Log in']");
-        this.logoutButton = pageFromLoginTest.locator('//a[@id="logout2"]');
+    constructor(page: Page) {
+        this.page = page;
+        this.loginLink = page.locator("//a[@id='login2']");
+        this.usernameInput = page.locator("//input[@id='loginusername']");
+        this.passwordInput = page.locator("//input[@id='loginpassword']");
+        this.loginButton = page.locator("//button[text()='Log in']");
+        this.logoutButton = page.locator('//a[@id="logout2"]');
     }
-
-
 
     async goto() {
         await this.page.goto("https://www.demoblaze.com/");
