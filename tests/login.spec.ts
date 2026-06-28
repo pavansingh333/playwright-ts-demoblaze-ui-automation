@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
-import { LoginPage } from '../page/LoginPage';
+import { LoginPage } from '../pages/LoginPage';
+import loginData from '../test-data/loginData.json'
 
 test("Test - Login verification", async ({ page }) => {
 
@@ -13,7 +14,7 @@ test("Test - Logout verification", async ({ page }) => {
 
   const loginPage = new LoginPage(page);
   await loginPage.goto();
-  await loginPage.login("testpavan", "test2026");
+  await loginPage.login(loginData.username, loginData.password);
   await loginPage.verifyLoginSuccess();
   await loginPage.logout();
 }

@@ -1,8 +1,8 @@
 import { test } from '@playwright/test';
-import { ProductPage } from '../page/ProductPage';
-import { LoginPage } from '../page/LoginPage';
-import { CartPage } from '../page/CartPage';
-
+import { ProductPage } from '../pages/ProductPage';
+import { LoginPage } from '../pages/LoginPage';
+import { CartPage } from '../pages/CartPage';
+import loginData from '../test-data/loginData.json'
 
 
 test("Test - Add product into cart", async ({ page }) => {
@@ -12,7 +12,7 @@ test("Test - Add product into cart", async ({ page }) => {
     const cartPage = new CartPage(page);
 
     await loginPage.goto();
-    await loginPage.login("testpavan", "test2026");
+    await loginPage.login(loginData.username, loginData.password);
     await loginPage.verifyLoginSuccess();
     await productPage.clickOnCategories("Laptops");
     await productPage.clickOnProduct("MacBook air");
