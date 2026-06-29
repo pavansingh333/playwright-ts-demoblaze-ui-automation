@@ -46,4 +46,10 @@ export class LoginPage {
         await expect(this.loginLink).toBeVisible({timeout:5000});
     }
 
+    async verifyLoginError(expectedMessage:string){
+        const dialog = await this.page.waitForEvent('dialog')
+        expect(dialog.message()).toContain(expectedMessage);
+        await dialog.accept();
+    }
+
 }
